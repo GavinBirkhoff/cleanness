@@ -9,7 +9,6 @@ module.exports = {
   tabWidth: 2, // tab缩进大小,默认为2
   useTabs: false, // 使用tab缩进，默认false
   semi: false, // 使用分号, 默认true
-  TrailingCooma: 'all', // 行尾逗号,默认none,可选 none|es5|all
   arrowParens: 'avoid', // 箭头函数参数括号 默认avoid 可选 avoid| always
   bracketSpacing: true, // JSX标签闭合位置 默认false
   overrides: [
@@ -26,4 +25,4 @@ module.exports = {
       },
     },
   ],
-};
+}

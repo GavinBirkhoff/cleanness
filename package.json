@@ -1,6 +1,6 @@
 {
   "name": "cleanness",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A collection of configuration files containing prettier, eslint, stylelint, and cli",
   "main": "dist/index.js",
   "files": [
@@ -8,12 +8,12 @@
     "cli.js"
   ],
   "scripts": {
-    "build": "tsc --build tsconfig.json && npm run copy-files",
+    "build": "rimraf dist && tsc --build tsconfig.json && npm run copy-files",
     "copy-files": "copyfiles -u 1 src/.prettierignore ./dist/",
     "deps": "yarn upgrade-interactive --latest",
     "lib": "cross-env TIMING=1 eslint lib",
     "lint": "npm run build && cd tsExample && npm run lint",
-    "lint-js": "npm run build && cd jsExample && npm run lint",
+    "lint:js": "npm run build && cd jsExample && npm run lint",
     "prepublishOnly": "npm run build && np --no-cleanup --yolo --no-publish --any-branch",
     "prettier": "prettier -c --write \"**/*\"",
     "test": "npm run testTS && npm run testJS",
@@ -64,10 +64,10 @@
     "os-locale": "^6.0.2",
     "prettier": "^2.6.2",
     "prettier-plugin-two-style-order": "^1.0.1",
-    "stylelint": "^14.6.1",
-    "stylelint-config-css-modules": "^4.1.0",
-    "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard": "^25.0.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-css-modules": "^2.2.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-standard": "^20.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.5.0",
     "typescript": "^4.6.3"
   },
