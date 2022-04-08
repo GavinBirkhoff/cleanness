@@ -3,7 +3,7 @@
 const chalk = require('chalk')
 const osLocale = require('os-locale')
 const fs = require('fs-extra')
-const path = require('path')
+// const path = require('path')
 
 // const cwd = process.cwd()
 const msgPath = process.env.GIT_PARAMS || process.env.HUSKY_GIT_PARAMS
