@@ -5,17 +5,19 @@ const semver = require('semver')
 const envinfo = require('envinfo')
 const inquirer = require('inquirer')
 const { existsSync } = require('fs')
+const fs = require('fs-extra')
 const { join } = require('path')
 const chalk = require('chalk')
+const copyfiles = require('copyfiles')
+const packageProject = require('./package')
 
 // print version and @local
 const args = yParser(process.argv.slice(2))
 
-console.log(args)
-
+const cleanness = ['.eslintrc.js', '.prettierrc.js', '.stylelintrc.js', '.prettierignore']
 if (args.v || args.version) {
   // eslint-disable-next-line global-require
-  console.log(require('./package').version)
+  console.log(packageProject.version)
   if (existsSync(join(__dirname, '.local'))) {
     console.log(chalk.cyan('@local'))
   }
@@ -40,11 +42,11 @@ switch (option) {
       .prompt([
         {
           type: 'list',
-          message: '请选择一个选项：',
+          message: 'Start your journey:',
           name: 'cleannessChose',
           default: 'recommend',
-          prefix: '☆☆☆☆',
-          suffix: '****',
+          prefix: '🏄‍♂️',
+          suffix: '',
           choices: ['recommend', 'customize'],
         },
       ])
@@ -54,16 +56,20 @@ switch (option) {
             .prompt([
               {
                 type: 'checkbox',
-                message: 'Choose one or more formats',
+                message: '🌱 Choose one or more formats',
                 name: 'formats',
                 choices: ['prettier', 'eslint', 'stylelint'],
               },
             ])
             .then(({ formats }) => {
-              console.log(formats)
+              if (formats) {
+                cleanness
+                  .filter(item => formats.findIndex(key => item.includes(key)) > -1)
+                  .forEach(item => changeFile(join(__dirname, 'dist', item), join(cwd, item)))
+              }
             })
         } else {
-          console.log(cleannessChose)
+          cleanness.forEach(item => changeFile(join(__dirname, 'dist', item), join(cwd, item)))
         }
       })
 
@@ -95,4 +101,14 @@ switch (option) {
       console.log(details)
     }
     break
+}
+
+async function changeFile(src, dest) {
+  try {
+    const data = await fs.readFile(src)
+    const str = data
+      .toString()
+      .replace(`require('./dist/index')`, `require(${packageProject.name})`)
+    await fs.writeFile(dest, str)
+  } catch (error) {}
 }

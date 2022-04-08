@@ -8,8 +8,8 @@
     "cli.js"
   ],
   "scripts": {
-    "build": "rimraf dist && tsc --build tsconfig.json && npm run copy-files",
-    "copy-files": "copyfiles -u 1 src/.prettierignore ./dist/",
+    "build": "rimraf dist && tsc --build tsconfig.json && npm run copy:files",
+    "copy:files": "copyfiles -s -E .*rc* .prettierignore  ./dist/",
     "deps": "yarn upgrade-interactive --latest",
     "lib": "cross-env TIMING=1 eslint lib",
     "lint": "npm run build && cd tsExample && npm run lint",
@@ -60,6 +60,7 @@
     "eslint-plugin-react-hooks": "^4.4.0",
     "eslint-plugin-unicorn": "^42.0.0",
     "fast-glob": "^3.2.11",
+    "fs-extra": "^10.0.1",
     "inquirer": "^8.2.2",
     "os-locale": "^5.0.0",
     "prettier": "^2.6.2",

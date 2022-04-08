@@ -1,5 +1,4 @@
-const path = require('path')
-
+const cleanness = require('./dist/index')
 module.exports = {
-  extends: [require.resolve(path.join(__dirname, './', 'dist/eslint'))],
+  extends: [cleanness.eslint],
 }
