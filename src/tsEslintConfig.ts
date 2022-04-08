@@ -1,4 +1,4 @@
-const isTypeAwareEnabled = process.env.DISABLE_TYPE_AWARE === undefined;
+const isTypeAwareEnabled = process.env.DISABLE_TYPE_AWARE === undefined
 
 export default {
   'no-undef': 0,
@@ -78,7 +78,7 @@ export default {
   '@typescript-eslint/no-redeclare': 'error',
   '@typescript-eslint/no-require-imports': 0,
   'no-shadow': 'off',
-  '@typescript-eslint/no-shadow': 'error',
+  '@typescript-eslint/no-shadow': 0,
   '@typescript-eslint/no-this-alias': 'error',
   'no-throw-literal': 'off',
   '@typescript-eslint/no-throw-literal': isTypeAwareEnabled ? 2 : 0,
@@ -159,4 +159,4 @@ export default {
     'error',
     { vars: 'all', args: 'after-used', ignoreRestSiblings: true },
   ],
-};
+}
