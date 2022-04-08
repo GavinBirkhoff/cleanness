@@ -1,6 +1,6 @@
 {
   "name": "cleanness",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A collection of configuration files containing prettier, eslint, stylelint, and cli",
   "main": "dist/index.js",
   "files": [
