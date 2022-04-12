@@ -11,6 +11,14 @@ npm i cleanness --save-dev
 yarn add cleanness -D
 ```
 
+Command to initialize related files
+
+```
+cleanness init
+```
+
+or Manually add related files
+
 in `.eslintrc.js`
 
 ```js
