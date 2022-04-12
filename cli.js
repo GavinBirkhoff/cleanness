@@ -8,7 +8,6 @@ const { existsSync } = require('fs')
 const fs = require('fs-extra')
 const { join } = require('path')
 const chalk = require('chalk')
-const copyfiles = require('copyfiles')
 const packageProject = require('./package')
 
 // print version and @local
