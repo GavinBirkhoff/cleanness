@@ -58,3 +58,21 @@ module.exports = {
   ...cleanness.prettier,
 }
 ```
+
+or Add a .cleanness.js to your root
+
+```js
+//.cleanness.js
+module.exports = {
+  // open cleanness verify
+  strict: true,
+  // User-defined verification rules
+  verify:
+    /^(((\ud83c[\udf00-\udfff])|(\ud83d[\udc00-\ude4f\ude80-\udeff])|[\u2600-\u2B55]) )?(revert: )?(feat|fix|docs|UI|refactor|perf|workflow|build|CI|typos|chore|tests|types|wip|release|dep|locale)(\(.+\))?: .{1,50}/,
+  // call it when verify was failed
+  verifyMsg: function (locale) {
+    // locale
+    // echo log
+  },
+}
+```
