@@ -59,10 +59,10 @@ module.exports = {
 }
 ```
 
-or Add a .cleanness.js to your root
+or Add a .cleanness.config.js to your root
 
 ```js
-//.cleanness.js
+//.cleanness.config.js
 module.exports = {
   // open cleanness verify
   strict: true,
